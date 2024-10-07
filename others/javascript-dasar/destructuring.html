@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Destructuring</title>
+  </head>
+  <body>
+    <script>
+      {
+        const names = ["Kisah", "Tegar", "Putra", "Budi", "Joko"];
+        let [firstName, middleName, lastName, ...others] = names; // Mengakses data dari array secara destructuring
+
+        console.info(firstName);
+        console.info(middleName);
+        console.info(lastName);
+        console.info(others);
+      }
+
+      {
+        const person = {
+          firstName: "Kisah",
+          lastName: "Putra",
+          address: {
+            street: "Jalan Belum Ada",
+            city: "Jakarta",
+            country: "Indonesia",
+          },
+          hobby: "Game",
+          channel: "Programmer Zaman Now",
+        };
+
+        let {
+          firstName,
+          lastName,
+          address: { city, street, country }, // Destructuring Nested Object
+          ...others
+        } = person;
+        console.info(firstName);
+        console.info(lastName);
+        console.info(city);
+        console.info(street);
+        console.info(country);
+        console.info(others);
+      }
+
+      // Destructuring Function Parameter (1) object
+      {
+        function displayPerson({ firstName, middleName, lastName }) {
+          console.info(firstName);
+          console.info(middleName);
+          console.info(lastName);
+        }
+
+        const person = {
+          firstName: "Kisah",
+          middleName: "Tegar",
+          lastName: "Putra",
+        };
+
+        displayPerson(person);
+      }
+
+      // Destructuring Function Parameter (2) array
+      {
+        function sum([first, second]) {
+          return first + second;
+        }
+
+        console.info(sum([1, 1]));
+        console.info(sum([10, 10]));
+      }
+
+      // Default Value Destructuring Array
+      {
+        const names = ["Kisah", "Budi"];
+        const [firstName, middleName = "Tegar", lastName = "Putra"] = names; // Default Value
+
+        console.info(firstName);
+        console.info(middleName);
+        console.info(lastName);
+      }
+
+      // Default Value Destructuring Object
+      {
+        const person = {
+          firstName: "Kisah",
+          middleName: "Budi",
+          lastName: "Putra",
+        };
+
+        let { firstName, middleName = "Tegar", lastName } = person; // Default value
+        console.info(firstName);
+        console.info(middleName);
+        console.info(lastName);
+      }
+
+      // Menggunakan nama variable lain
+      {
+        const person = {
+          firstName: "Kisah",
+          middleName: "Budi",
+          lastName: "Putra",
+        };
+
+        let {
+          firstName: namaDepan,
+          middleName: namaTengah = "Tegar",
+          lastName: namaBelakang,
+        } = person;
+        console.info(namaDepan);
+        console.info(namaTengah);
+        console.info(namaBelakang);
+      }
+    </script>
+  </body>
+</html>
